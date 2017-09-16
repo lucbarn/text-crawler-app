@@ -1,11 +1,73 @@
+const modalContainer = document.getElementById('modal-container');
+const modalDescription = document.getElementById('modal-description');
+const modalWords = document.getElementById('modal-words');
+const left = document.getElementById('left');
+const right = document.getElementById('right');
+const modalWordsList = document.getElementById('modal-words-list');
+const closingButtons = document.getElementsByClassName('closing-button');
+const description = document.getElementById('description');
 const form = document.getElementById('form');
 const fileUpload = document.getElementById('file-upload');
-const words = document.getElementById('words');
+const box = document.getElementById('box');
 const enterButton = document.getElementById('enter-button');
 const startButton = document.getElementById('start-button');
 const textArea = document.getElementById('text-area');
 const reader = new FileReader();
 const wordsList = [];
+
+const arrowSide = 30;
+let ctx = left.getContext('2d');
+ctx.strokeStyle ='blue';
+ctx.lineWidth = 1;
+ctx.moveTo(35, 5);
+ctx.lineTo(35 - arrowSide * Math.sin(Math.PI / 3), 20);
+ctx.lineTo(35, 35);
+ctx.lineTo(35, 5);
+ctx.fillStyle = 'blue';
+ctx.fill();
+ctx.stroke();
+
+ctx = right.getContext('2d');
+ctx.strokeStyle ='blue';
+ctx.lineWidth = 1;
+ctx.moveTo(5, 5);
+ctx.lineTo(5 + arrowSide * Math.sin(Math.PI / 3), 20);
+ctx.lineTo(5, 35);
+ctx.lineTo(5, 5);
+ctx.fillStyle = 'blue';
+ctx.fill();
+ctx.stroke();
+
+for (let i = 0; i < closingButtons.length; i++) {
+  closingButtons[i].addEventListener('click', function() {
+    modalContainer.style.opacity = 0;
+    window.setTimeout(function() {
+      modalContainer.style.visibility = 'hidden';
+    }, 500);
+  });
+}
+
+left.addEventListener('click', previous);
+right.addEventListener('click', next);
+
+words.addEventListener('click', function(event) {
+  if (event.target.className == 'header-li-text') {
+    modalDescription.style.display = 'none';
+    modalWords.style.display = 'flex';
+    renderWordsList();
+    modalContainer.style.visibility = 'visible';
+    modalContainer.style.opacity = 1;
+  }
+});
+
+description.addEventListener('click', function(event) {
+  if (event.target.className == 'header-li-text') {
+    modalWords.style.display = 'none';
+    modalDescription.style.display = 'flex';
+    modalContainer.style.visibility = 'visible';
+    modalContainer.style.opacity = 1;
+  }
+});
 
 fileUpload.addEventListener('click', function() {
   this.value = '';
@@ -38,8 +100,10 @@ fileUpload.addEventListener('change', function() {
 
 form.addEventListener('submit', function(event) {
   event.preventDefault();
-  wordsList.push(words.value);
-  words.value = '';
+  if (box.value) {
+    wordsList.push(box.value);
+    box.value = '';
+  }
 });
 
 function crawler(strings, text) {
@@ -76,5 +140,85 @@ function analyzeText() {
   textArea.innerHTML = '';
   for (const phrase of phrases) {
     textArea.innerHTML += `<p>${phrase}</p>`;
+  }
+}
+
+let i = 0;
+
+function lines(string) {
+  // modalContainer.clientWidth * 0.6 -> width of modal-words
+  // modalWords' width * 0.7 -> max width of modal-words-list
+  // 24 -> estimate of the width of upper case W (24px)
+  return Math.ceil((string.length * 24) / (modalContainer.clientWidth * 0.6 * 0.7));
+}
+
+function renderWordsList() {
+  // 0.8 -> max modalWordsList height is 80% of its container's height
+  if (wordsList.length == 0) {
+    modalWordsList.innerText = 'No results';
+  } else {
+    n = modalWordsList.childElementCount;
+    i -= n;
+    next();
+  }
+}
+
+function next() {
+  // 80% of the height of modalWords, which is 80% of the
+  // height of modalContainer
+  let spaceLeft = modalContainer.clientHeight * 0.8 * 0.8;
+  // i = Math.max(i, 0);
+  const tempList = [];
+  while (i < wordsList.length) {
+    // 30 -> line-height
+    // 20 -> 10 + 10 = margin-top + margin-bottom
+    const estimatedLiHeight = lines(wordsList[i]) * 30 + 20;
+    if (estimatedLiHeight > spaceLeft) {
+      break;
+    } else {
+      tempList.push(wordsList[i]);
+      spaceLeft -= estimatedLiHeight;
+      i++;
+    }
+  }
+  if (tempList.length > 0) {
+    modalWordsList.innerHTML = '';
+    for (const word of tempList) {
+      modalWordsList.innerHTML += `<li class="words-container-li">
+                                     <div class="word-container">${word}</div>
+                                   </li>`;
+    }
+  }
+}
+
+function previous() {
+  let spaceLeft = modalContainer.clientHeight * 0.8 * 0.8;
+  // i = Math.min(i, wordsList.length - 1);
+  n = modalWordsList.childElementCount;
+  if (i > n) {
+    i -= n;
+    j = i-1;
+    const tempList = [];
+    while (j >= 0) {
+      // 30 -> line-height
+      // 20 -> 10 + 10 = margin-top + margin-bottom
+      const estimatedLiHeight = lines(wordsList[j]) * 30 + 20;
+      if (estimatedLiHeight > spaceLeft) {
+        break;
+      } else {
+        tempList.push(wordsList[j]);
+        spaceLeft -= estimatedLiHeight;
+        j--;
+      }
+    }
+    if (tempList.length > 0) {
+      tempList.reverse();
+      modalWordsList.innerHTML = '';
+      for (const word of tempList) {
+        modalWordsList.innerHTML += `<li class="words-container-li">
+                                       <div class="word-container">${word}</div>
+                                     </li>`;
+      }
+    }
   }
 }

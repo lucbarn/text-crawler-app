@@ -7,17 +7,54 @@
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
+    <div id="modal-container">
+      <div id="modal-description">
+        <div class="closing-button"></div>
+        <p class="text-center">
+          <strong>Hello, welcome to Contextum!</strong><br><br>
+          Contextum lets you analyze a text and extract the phrases in which words appear.<br><br>
+        </p>
+        <p class="text-left">
+          <span class="number">1</span>To start, enter one or more words you wold like to find
+          in a text that can be a book, a song or an article.<br><br>
+          <span class="number">2</span>Then, upload the text as a .txt file.<br><br>
+          <span class="number">3</span>Finally, click on the start button to see the context in which
+          the words you chose are used. If the search gives no results, try with some other words.
+        </p>
+      </div>
+      <div id="modal-words">
+        <div id="arrows-container">
+          <canvas id="left" width="40" height="40"></canvas>
+          <canvas id="right" width="40" height="40"></canvas>
+        </div>
+        <div class="closing-button"></div>
+        <ul id="modal-words-list"></ul>
+      </div>
+    </div>
     <header>
       <div id="logo">Contextum</div>
-      <div id="source-code">
-        <a href="https://github.com/lucbarn/contextum">Source Code</a>
-      </div>
+      <ul id="header-ul">
+        <li id="words" class="header-li">
+          <div class="header-li-text">Words</div>
+          <div class="header-li-border-top"></div>
+        </li>
+        <li id="description" class="header-li">
+          <div class="header-li-text">Guide</div>
+          <div class="header-li-border-top"></div>
+        </li>
+        <li id="source-code" class="header-li">
+          <div class="header-li-text">
+            <a href="https://github.com/lucbarn/contextum">Source Code</a>
+          </div>
+          <div class="header-li-border-top"></div>
+        </li>
+      </ul>
     </header>
     <main>
       <div id="form-container">
         <form id="form">
-          <div id="search-box-container">
-            <input id="words" type="text" placeholder="Enter a new word...">
+          <div id="box-container">
+            <input id="box" type="text" placeholder="Enter a new word...">
             <button id="enter-button" type="submit">+</button>
           </div>
           <input id="file-upload" type="file">
