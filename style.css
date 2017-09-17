@@ -21,7 +21,8 @@ body {
   flex-wrap: wrap;
   align-content: center;
   font-size: large;
-  width: 60%;
+  width: 100%;
+  max-width: 1000px;
   height: 80%;
   padding: 10%;
   margin: auto;
@@ -29,6 +30,12 @@ body {
   background-color: white;
   border-radius: 5px;
   z-index: 2;
+}
+
+@media screen and (max-width: 800px) {
+  #modal-description {
+    font-size: medium;
+  }
 }
 
 .closing-button {
@@ -67,7 +74,8 @@ body {
 #modal-words {
   position: relative;
   display: none;
-  width: 60%;
+  width: 100%;
+  max-width: 1000px;
   height: 80%;
   margin: auto;
   background-color: white;
@@ -78,7 +86,7 @@ body {
 
 #arrows-container {
   position: absolute;
-  top: 20px;
+  top: 10px;
   left: 20px;
   display: flex;
 }
