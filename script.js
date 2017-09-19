@@ -1,14 +1,15 @@
 const modalContainer = document.getElementById('modal-container');
 const modalDescription = document.getElementById('modal-description');
 const modalWords = document.getElementById('modal-words');
-const left = document.getElementById('left');
-const right = document.getElementById('right');
+const leftArrow = document.getElementById('left');
+const rightArrow = document.getElementById('right');
 const modalWordsList = document.getElementById('modal-words-list');
 const closingButtons = document.getElementsByClassName('closing-button');
-const description = document.getElementById('description');
-const form = document.getElementById('form');
+const wordsVar = document.getElementById('words');
+const descriptionVar = document.getElementById('description');
+const formVar = document.getElementById('form');
 const fileUpload = document.getElementById('file-upload');
-const box = document.getElementById('box');
+const boxVar = document.getElementById('box');
 const enterButton = document.getElementById('enter-button');
 const startButton = document.getElementById('start-button');
 const textArea = document.getElementById('text-area');
@@ -47,10 +48,10 @@ for (let i = 0; i < closingButtons.length; i++) {
   });
 }
 
-left.addEventListener('click', previous);
-right.addEventListener('click', next);
+leftArrow.addEventListener('click', previous);
+rightArrow.addEventListener('click', next);
 
-words.addEventListener('click', function(event) {
+wordsVar.addEventListener('click', function(event) {
   if (event.target.className == 'header-li-text') {
     modalDescription.style.display = 'none';
     modalWords.style.display = 'flex';
@@ -60,7 +61,7 @@ words.addEventListener('click', function(event) {
   }
 });
 
-description.addEventListener('click', function(event) {
+descriptionVar.addEventListener('click', function(event) {
   if (event.target.className == 'header-li-text') {
     modalWords.style.display = 'none';
     modalDescription.style.display = 'flex';
@@ -98,11 +99,13 @@ fileUpload.addEventListener('change', function() {
   };
 });
 
-form.addEventListener('submit', function(event) {
+formVar.addEventListener('submit', function(event) {
   event.preventDefault();
-  if (box.value) {
-    wordsList.push(box.value);
-    box.value = '';
+  if (boxVar.value) {
+    if ((boxVar.value.length < 40) && (wordsList.indexOf(boxVar.value) === -1)) {
+      wordsList.push(boxVar.value);
+    }
+    boxVar.value = '';
   }
 });
 
@@ -152,10 +155,21 @@ function lines(string) {
   return Math.ceil((string.length * 24) / (modalContainer.clientWidth * 0.6 * 0.7));
 }
 
+function deleteWord(element) {
+  wordsList.splice(element.getAttribute('wordsListIndex'), 1);
+  n = modalWordsList.childElementCount;
+  if ((n === 1) && (wordsList.length != 0)) {
+    previous();
+  } else {
+    renderWordsList();
+  }
+}
+
 function renderWordsList() {
   // 0.8 -> max modalWordsList height is 80% of its container's height
   if (wordsList.length == 0) {
     modalWordsList.innerText = 'No results';
+    i = 0;
   } else {
     n = modalWordsList.childElementCount;
     i -= n;
@@ -167,7 +181,6 @@ function next() {
   // 80% of the height of modalWords, which is 80% of the
   // height of modalContainer
   let spaceLeft = modalContainer.clientHeight * 0.8 * 0.8;
-  // i = Math.max(i, 0);
   const tempList = [];
   while (i < wordsList.length) {
     // 30 -> line-height
@@ -183,9 +196,13 @@ function next() {
   }
   if (tempList.length > 0) {
     modalWordsList.innerHTML = '';
-    for (const word of tempList) {
+    let word;
+    for (let k = 0; k < tempList.length; k++) {
+      word = tempList[k];
       modalWordsList.innerHTML += `<li class="words-container-li">
-                                     <div class="word-container">${word}</div>
+                                     <div class="word-container"
+                                          wordsListIndex="${i - tempList.length + k}"
+                                          onclick="deleteWord(this)">${word}</div>
                                    </li>`;
     }
   }
@@ -193,7 +210,6 @@ function next() {
 
 function previous() {
   let spaceLeft = modalContainer.clientHeight * 0.8 * 0.8;
-  // i = Math.min(i, wordsList.length - 1);
   n = modalWordsList.childElementCount;
   if (i > n) {
     i -= n;
@@ -214,9 +230,13 @@ function previous() {
     if (tempList.length > 0) {
       tempList.reverse();
       modalWordsList.innerHTML = '';
-      for (const word of tempList) {
+      let word;
+      for (let k = 0; k < tempList.length; k++) {
+        word = tempList[k];
         modalWordsList.innerHTML += `<li class="words-container-li">
-                                       <div class="word-container">${word}</div>
+                                       <div class="word-container"
+                                            wordsListIndex="${i - tempList.length + k}"
+                                            onclick="deleteWord(this)">${word}</div>
                                      </li>`;
       }
     }
