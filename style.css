@@ -262,9 +262,17 @@ main {
 
 #text-area {
   width: 100%;
-  margin: 100px auto;
+  margin: 100px auto 0px auto;
   padding: 0px 50px;
   box-sizing: border-box;
+}
+
+#show-more {
+  display: none;
+  width: 200px;
+  height: 50px;
+  margin: 50px auto;
+  font-size: 18px;
 }
 
 .text-left {

@@ -13,6 +13,7 @@ const boxVar = document.getElementById('box');
 const enterButton = document.getElementById('enter-button');
 const startButton = document.getElementById('start-button');
 const textArea = document.getElementById('text-area');
+const showMoreButton = document.getElementById('show-more');
 const reader = new FileReader();
 const wordsList = [];
 
@@ -109,9 +110,10 @@ formVar.addEventListener('submit', function(event) {
   }
 });
 
-function crawler(strings, text) {
+showMoreButton.addEventListener('click', showResults);
+
+function *crawlerGenerator(strings, text) {
   const words = text.split(/\s+/g);
-  const res = [];
   const variants = {};
   for (let word of strings) {
     for (let suffix of ['', 's', 'ing', 'ed', 'd']) {
@@ -131,21 +133,38 @@ function crawler(strings, text) {
       while ((k < words.length) && ('.;:?!'.indexOf(words[k].charAt(words[k].length - 1)) === -1)) {
         k++;
       }
-      // res.push(`${words[i].toUpperCase()}: ` + words.slice(j+1,k+1).join(' '));
-      res.push(`${words[i].replace(/\.|,|;|:|\?|!/g, '').toUpperCase()}: ` + words.slice(j+1,i).join(' ') + ` <strong>${words[i]}</strong> ` + words.slice(i+1,k+1).join(' '));
+      yield (`${words[i].replace(/\.|,|;|:|\?|!/g, '').toUpperCase()}: ` + words.slice(j+1,i).join(' ') + ` <strong>${words[i]}</strong> ` + words.slice(i+1,k+1).join(' '));
     }
   }
-  return res;
 }
 
+let crawler;
+let phrase;
+
 function analyzeText() {
-  phrases = crawler(wordsList, text);
+  crawler = crawlerGenerator(wordsList, text);
+  phrase = crawler.next();
   textArea.innerHTML = '';
-  for (const phrase of phrases) {
-    textArea.innerHTML += `<p>${phrase}</p>`;
+  showResults();
+}
+
+function showResults() {
+  for (let i = 0; i < 20; i++) {
+    if (phrase.done) {
+      break;
+    } else {
+      textArea.innerHTML += `<p>${phrase.value}</p>`;
+      phrase = crawler.next();
+    }
+  }
+  if (phrase.done && (showMoreButton.style.display === 'block')) {
+    showMoreButton.style.display = 'none';
+  } else if (!phrase.done && (showMoreButton.style.display != 'block')) {
+    showMoreButton.style.display = 'block';
   }
 }
 
+// i -> index of the next word to be displayed
 let i = 0;
 
 function lines(string) {
