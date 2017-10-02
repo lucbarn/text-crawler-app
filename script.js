@@ -5,11 +5,16 @@ const leftArrow = document.getElementById('left');
 const rightArrow = document.getElementById('right');
 const modalWordsList = document.getElementById('modal-words-list');
 const closingButtons = document.getElementsByClassName('closing-button');
-const wordsVar = document.getElementById('words');
-const descriptionVar = document.getElementById('description');
-const formVar = document.getElementById('form');
+const headerUl = document.getElementById('header-ul');
+const pile = document.getElementById('pile');
+const topLayer = document.getElementById('top-layer');
+const middleLayer = document.getElementById('middle-layer');
+const bottomLayer = document.getElementById('bottom-layer');
+const words = document.getElementById('words');
+const description = document.getElementById('description');
+const form = document.getElementById('form');
 const fileUpload = document.getElementById('file-upload');
-const boxVar = document.getElementById('box');
+const box = document.getElementById('box');
 const enterButton = document.getElementById('enter-button');
 const startButton = document.getElementById('start-button');
 const textArea = document.getElementById('text-area');
@@ -52,7 +57,33 @@ for (let i = 0; i < closingButtons.length; i++) {
 leftArrow.addEventListener('click', previous);
 rightArrow.addEventListener('click', next);
 
-wordsVar.addEventListener('click', function(event) {
+let headerUlVisible = false;
+
+pile.addEventListener('click', function() {
+  if (!headerUlVisible) {
+    headerUl.style.transform = 'translateX(-20px)';
+    middleLayer.style.opacity = '0';
+    topLayer.style.top = '50%';
+    topLayer.style.transform = 'translateY(-50%) rotate(45deg)';
+    topLayer.style.backgroundColor = 'rgb(227,86,48)';
+    bottomLayer.style.bottom = '50%';
+    bottomLayer.style.transform = 'translateY(50%) rotate(-45deg)';
+    bottomLayer.style.backgroundColor = 'rgb(227,86,48)';
+    headerUlVisible = true;
+  } else {
+    headerUl.style.transform = 'translateX(110%)';
+    middleLayer.style.opacity = '1';
+    topLayer.style.top = '5%';
+    topLayer.style.transform = '';
+    topLayer.style.backgroundColor = 'rgb(28,105,180)';
+    bottomLayer.style.bottom = '5%';
+    bottomLayer.style.transform = '';
+    bottomLayer.style.backgroundColor = 'rgb(28,105,180)';
+    headerUlVisible = false;
+  }
+});
+
+words.addEventListener('click', function(event) {
   if (event.target.className == 'header-li-text') {
     modalDescription.style.display = 'none';
     modalWords.style.display = 'flex';
@@ -62,7 +93,7 @@ wordsVar.addEventListener('click', function(event) {
   }
 });
 
-descriptionVar.addEventListener('click', function(event) {
+description.addEventListener('click', function(event) {
   if (event.target.className == 'header-li-text') {
     modalWords.style.display = 'none';
     modalDescription.style.display = 'flex';
@@ -100,13 +131,13 @@ fileUpload.addEventListener('change', function() {
   };
 });
 
-formVar.addEventListener('submit', function(event) {
+form.addEventListener('submit', function(event) {
   event.preventDefault();
-  if (boxVar.value) {
-    if ((boxVar.value.length < 40) && (wordsList.indexOf(boxVar.value) === -1)) {
-      wordsList.push(boxVar.value);
+  if (box.value) {
+    if ((box.value.length < 40) && (wordsList.indexOf(box.value) === -1)) {
+      wordsList.push(box.value);
     }
-    boxVar.value = '';
+    box.value = '';
   }
 });
 

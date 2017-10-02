@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Contextum is a text crawler that lets you find
+      the phrases in which words appear">
     <title>Contextum</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
@@ -33,6 +35,11 @@
     </div>
     <header>
       <div id="logo">Contextum</div>
+      <div id="pile">
+        <div id="top-layer" class="layer"></div>
+        <div id="middle-layer" class="layer"></div>
+        <div id="bottom-layer" class="layer"></div>
+      </div>
       <ul id="header-ul">
         <li id="words" class="header-li">
           <div class="header-li-text">Words</div>
@@ -54,8 +61,7 @@
       <div id="form-container">
         <form id="form">
           <div id="box-container">
-            <input id="box" type="text" placeholder="Enter a new word...">
-            <button id="enter-button" type="submit">+</button>
+            <input id="box" type="text" placeholder="Add a new word...">
           </div>
           <input id="file-upload" type="file">
         </form>
