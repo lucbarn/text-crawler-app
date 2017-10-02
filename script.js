@@ -61,7 +61,7 @@ let headerUlVisible = false;
 
 pile.addEventListener('click', function() {
   if (!headerUlVisible) {
-    headerUl.style.transform = 'translateX(-20px)';
+    headerUl.style.transform = 'translateX(0%)';
     middleLayer.style.opacity = '0';
     topLayer.style.top = '50%';
     topLayer.style.transform = 'translateY(-50%) rotate(45deg)';
