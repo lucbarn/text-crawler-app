@@ -308,11 +308,30 @@ main {
   margin-top: 30px;
 }
 
-#start-button {
+.azure-button {
   position: relative;
-  width: 100px;
-  height: 40px;
+  display: flex;
+  min-width: 130px;
+  min-height: 40px;
+  padding: 5px 20px;
+  border-radius: 5px;
+  background: linear-gradient(rgb(72, 166, 246), rgb(30, 119, 185));
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: auto;
+}
+
+.azure-button > span {
+  margin: auto;
+  color: rgb(226,243,255);
+  font-family: sans-serif;
+}
+
+.azure-button:hover {
+  cursor: pointer;
+}
+
+.azure-button:active {
+  background: linear-gradient(rgb(36, 130, 200), rgb(34, 136, 224));
 }
 
 #text-area {
@@ -324,10 +343,8 @@ main {
 
 #show-more {
   display: none;
-  width: 200px;
-  height: 50px;
-  margin: 50px auto;
-  font-size: 18px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .text-left {

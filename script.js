@@ -188,10 +188,10 @@ function showResults() {
       phrase = crawler.next();
     }
   }
-  if (phrase.done && (showMoreButton.style.display === 'block')) {
+  if (phrase.done && (showMoreButton.style.display === 'flex')) {
     showMoreButton.style.display = 'none';
-  } else if (!phrase.done && (showMoreButton.style.display != 'block')) {
-    showMoreButton.style.display = 'block';
+  } else if (!phrase.done && (showMoreButton.style.display != 'flex')) {
+    showMoreButton.style.display = 'flex';
   }
 }
 
