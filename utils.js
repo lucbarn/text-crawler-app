@@ -3,14 +3,14 @@ function *crawlerGenerator(strings, text) {
   const variants = {};
   for (let word of strings) {
     for (let suffix of ['', 's', 'ing', 'ed', 'd']) {
-      variants[word + suffix] = 1;
+      variants[word.toLowerCase() + suffix] = 1;
       for (let punctuationMark of [',', '.', ':', ';', ')', '?', '!']) {
-        variants[word + suffix + punctuationMark] = 1;
+        variants[word.toLowerCase() + suffix + punctuationMark] = 1;
       }
     }
   }
   for (let i = 0; i < words.length; i++) {
-    if (variants[words[i]] === 1) {
+    if (variants[words[i].toLowerCase()] === 1) {
       let j = i-1;
       let k = i;
       while ((j >= 0) && ('.;:?!'.indexOf(words[j].charAt(words[j].length - 1)) === -1)) {
