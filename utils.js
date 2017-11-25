@@ -1,14 +1,21 @@
-function *crawlerGenerator(strings, text) {
-  const words = text.split(/\s+/g);
+function createVariants(strings, words) {
   const variants = {};
+  const suffixes = ['', 's', 'ing', 'ed', 'd'];
+  const punctuationMarks = [',', '.', ':', ';', ')', '?', '!'];
   for (let word of strings) {
-    for (let suffix of ['', 's', 'ing', 'ed', 'd']) {
+    for (let suffix of suffixes) {
       variants[word.toLowerCase() + suffix] = 1;
-      for (let punctuationMark of [',', '.', ':', ';', ')', '?', '!']) {
+      for (let punctuationMark of punctuationMarks) {
         variants[word.toLowerCase() + suffix + punctuationMark] = 1;
       }
     }
   }
+  return variants;
+}
+
+function *crawlerGenerator(strings, text) {
+  const words = text.split(/\s+/g);
+  const variants = createVariants(strings, words);
   for (let i = 0; i < words.length; i++) {
     if (variants[words[i].toLowerCase()] === 1) {
       let j = i-1;
