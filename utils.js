@@ -1,8 +1,8 @@
-function createVariants(strings, words) {
+function createVariants(words) {
   const variants = {};
   const suffixes = ['', 's', 'ing', 'ed', 'd'];
   const punctuationMarks = [',', '.', ':', ';', ')', '?', '!'];
-  for (let word of strings) {
+  for (let word of words) {
     for (let suffix of suffixes) {
       variants[word.toLowerCase() + suffix] = 1;
       for (let punctuationMark of punctuationMarks) {
@@ -13,20 +13,20 @@ function createVariants(strings, words) {
   return variants;
 }
 
-function *crawlerGenerator(strings, text) {
-  const words = text.split(/\s+/g);
-  const variants = createVariants(strings, words);
-  for (let i = 0; i < words.length; i++) {
-    if (variants[words[i].toLowerCase()] === 1) {
+function *crawlerGenerator(wordsList, text) {
+  const textWords = text.split(/\s+/g);
+  const variants = createVariants(wordsList);
+  for (let i = 0; i < textWords.length; i++) {
+    if (variants[textWords[i].toLowerCase()] === 1) {
       let j = i-1;
       let k = i;
-      while ((j >= 0) && ('.;:?!'.indexOf(words[j].charAt(words[j].length - 1)) === -1)) {
+      while ((j >= 0) && ('.;:?!'.indexOf(textWords[j].charAt(textWords[j].length - 1)) === -1)) {
         j--;
       }
-      while ((k < words.length) && ('.;:?!'.indexOf(words[k].charAt(words[k].length - 1)) === -1)) {
+      while ((k < textWords.length) && ('.;:?!'.indexOf(textWords[k].charAt(textWords[k].length - 1)) === -1)) {
         k++;
       }
-      yield (`${words[i].replace(/\.|,|;|:|\?|!/g, '').toUpperCase()}: ` + words.slice(j+1,i).join(' ') + ` <strong>${words[i]}</strong> ` + words.slice(i+1,k+1).join(' '));
+      yield (`${textWords[i].replace(/\.|,|;|:|\?|!/g, '').toUpperCase()}: ` + textWords.slice(j+1,i).join(' ') + ` <strong>${textWords[i]}</strong> ` + textWords.slice(i+1,k+1).join(' '));
     }
   }
 }
