@@ -80,6 +80,8 @@ function deleteWord(element) {
 function renderWordsList() {
   // 0.8 -> max modalWordsList height is 80% of its container's height
   if (wordsList.length == 0) {
+    leftArrow.style.display = 'none';
+    rightArrow.style.display = 'none';
     modalWordsList.innerText = 'No results';
     i = 0;
   } else {
@@ -105,6 +107,14 @@ function next() {
       spaceLeft -= estimatedLiHeight;
       i++;
     }
+  }
+  if (i > tempList.length && leftArrow.style.display === 'none') {
+    leftArrow.style.display = 'block';
+  }
+  if (i >= wordsList.length) {
+    rightArrow.style.display = 'none';
+  } else if (rightArrow.style.display === 'none') {
+    rightArrow.style.display = 'block';
   }
   if (tempList.length > 0) {
     modalWordsList.innerHTML = '';
@@ -138,6 +148,12 @@ function previous() {
         spaceLeft -= estimatedLiHeight;
         j--;
       }
+    }
+    if (i < wordsList.length && rightArrow.style.display === 'none') {
+      rightArrow.style.display = 'block';
+    }
+    if (i === tempList.length) {
+      leftArrow.style.display = 'none';
     }
     if (tempList.length > 0) {
       tempList.reverse();
