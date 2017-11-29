@@ -77,6 +77,19 @@ function deleteWord(element) {
   }
 }
 
+function changeArrowsStyle() {
+  if (i < wordsList.length) {
+    rightArrow.style.display = 'block';
+  } else {
+    rightArrow.style.display = 'none';
+  }
+  if (i > modalWordsList.childElementCount) {
+    leftArrow.style.display = 'block';
+  } else {
+    leftArrow.style.display = 'none';
+  }
+}
+
 function renderWordsList() {
   // 0.8 -> max modalWordsList height is 80% of its container's height
   if (wordsList.length == 0) {
@@ -108,14 +121,6 @@ function next() {
       i++;
     }
   }
-  if (i > tempList.length && leftArrow.style.display === 'none') {
-    leftArrow.style.display = 'block';
-  }
-  if (i >= wordsList.length) {
-    rightArrow.style.display = 'none';
-  } else if (rightArrow.style.display === 'none') {
-    rightArrow.style.display = 'block';
-  }
   if (tempList.length > 0) {
     modalWordsList.innerHTML = '';
     let word;
@@ -128,6 +133,7 @@ function next() {
                                    </li>`;
     }
   }
+  changeArrowsStyle();
 }
 
 function previous() {
@@ -149,12 +155,6 @@ function previous() {
         j--;
       }
     }
-    if (i < wordsList.length && rightArrow.style.display === 'none') {
-      rightArrow.style.display = 'block';
-    }
-    if (i === tempList.length) {
-      leftArrow.style.display = 'none';
-    }
     if (tempList.length > 0) {
       tempList.reverse();
       modalWordsList.innerHTML = '';
@@ -168,5 +168,6 @@ function previous() {
                                      </li>`;
       }
     }
+    changeArrowsStyle();
   }
 }
