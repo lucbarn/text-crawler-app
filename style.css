@@ -24,12 +24,27 @@ body {
   width: 100%;
   max-width: 1000px;
   height: 80%;
-  padding: 10%;
+  padding: 50px;
   margin: auto;
   box-sizing: border-box;
   background-color: white;
   border-radius: 5px;
   z-index: 2;
+}
+
+#leftArrowDescription {
+  display: none;
+}
+
+.guide-page {
+  max-width: calc(100% - 100px);
+  max-height: calc(100% - 100px);
+  margin: auto;
+  text-align: center;
+}
+
+#guide-page-2, #guide-page-3 {
+  display: none;
 }
 
 @media screen and (max-width: 800px) {
@@ -84,22 +99,22 @@ body {
   z-index: 2;
 }
 
-#arrows-container {
+.arrows-container {
   position: absolute;
   top: 10px;
   left: 20px;
   display: flex;
 }
 
-#left {
+.left {
   margin-right: 5px;
 }
 
-#right {
+.right {
   margin-left: 5px;
 }
 
-#left:hover, #right:hover {
+.left:hover, .right:hover {
   cursor: pointer;
 }
 

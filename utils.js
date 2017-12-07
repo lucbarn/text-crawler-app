@@ -104,6 +104,36 @@ function renderWordsList() {
   }
 }
 
+let mdpIndex = 0;
+
+function nextDescription() {
+  if (mdpIndex < modalDescriptionPages.length - 1) {
+    mdpIndex++;
+    if (mdpIndex === modalDescriptionPages.length - 1) {
+      rightArrowDescription.style.display = 'none';
+    }
+    if (mdpIndex > 0) {
+      leftArrowDescription.style.display = 'block';
+    }
+    modalDescriptionPages[mdpIndex-1].style.display = 'none';
+    modalDescriptionPages[mdpIndex].style.display = 'block';
+  }
+}
+
+function previousDescription() {
+  if (mdpIndex > 0) {
+    mdpIndex--;
+    if (mdpIndex === 0) {
+      leftArrowDescription.style.display = 'none';
+    }
+    if (mdpIndex < modalDescriptionPages.length - 1) {
+      rightArrowDescription.style.display = 'block';
+    }
+    modalDescriptionPages[mdpIndex+1].style.display = 'none';
+    modalDescriptionPages[mdpIndex].style.display = 'block';
+  }
+}
+
 function next() {
   // 80% of the height of modalWords, which is 80% of the
   // height of modalContainer

@@ -1,8 +1,15 @@
 const modalContainer = document.getElementById('modal-container');
 const modalDescription = document.getElementById('modal-description');
+const guidePage1 = document.getElementById('guide-page-1');
+const guidePage2 = document.getElementById('guide-page-2');
+const guidePage3 = document.getElementById('guide-page-3');
 const modalWords = document.getElementById('modal-words');
-const leftArrow = document.getElementById('left');
-const rightArrow = document.getElementById('right');
+const leftArrows = document.getElementsByClassName('left');
+const rightArrows = document.getElementsByClassName('right');
+const leftArrowDescription = document.getElementById('leftArrowDescription');
+const rightArrowDescription = document.getElementById('rightArrowDescription');
+const leftArrow = document.getElementById('leftArrow');
+const rightArrow = document.getElementById('rightArrow');
 const modalWordsList = document.getElementById('modal-words-list');
 const closingButtons = document.getElementsByClassName('closing-button');
 const headerUl = document.getElementById('header-ul');
@@ -23,27 +30,35 @@ const reader = new FileReader();
 const wordsList = [];
 
 const arrowSide = 30;
-let ctx = left.getContext('2d');
-ctx.strokeStyle ='blue';
-ctx.lineWidth = 1;
-ctx.moveTo(35, 5);
-ctx.lineTo(35 - arrowSide * Math.sin(Math.PI / 3), 20);
-ctx.lineTo(35, 35);
-ctx.lineTo(35, 5);
-ctx.fillStyle = 'blue';
-ctx.fill();
-ctx.stroke();
 
-ctx = right.getContext('2d');
-ctx.strokeStyle ='blue';
-ctx.lineWidth = 1;
-ctx.moveTo(5, 5);
-ctx.lineTo(5 + arrowSide * Math.sin(Math.PI / 3), 20);
-ctx.lineTo(5, 35);
-ctx.lineTo(5, 5);
-ctx.fillStyle = 'blue';
-ctx.fill();
-ctx.stroke();
+for (let i = 0; i < leftArrows.length; i++) {
+  let left = leftArrows[i];
+  let right = rightArrows[i];
+
+
+  let ctx = left.getContext('2d');
+  ctx.strokeStyle ='blue';
+  ctx.lineWidth = 1;
+  ctx.moveTo(35, 5);
+  ctx.lineTo(35 - arrowSide * Math.sin(Math.PI / 3), 20);
+  ctx.lineTo(35, 35);
+  ctx.lineTo(35, 5);
+  ctx.fillStyle = 'blue';
+  ctx.fill();
+  ctx.stroke();
+
+  ctx = right.getContext('2d');
+  ctx.strokeStyle ='blue';
+  ctx.lineWidth = 1;
+  ctx.moveTo(5, 5);
+  ctx.lineTo(5 + arrowSide * Math.sin(Math.PI / 3), 20);
+  ctx.lineTo(5, 35);
+  ctx.lineTo(5, 5);
+  ctx.fillStyle = 'blue';
+  ctx.fill();
+  ctx.stroke();
+
+}
 
 for (let i = 0; i < closingButtons.length; i++) {
   closingButtons[i].addEventListener('click', function() {
@@ -53,6 +68,11 @@ for (let i = 0; i < closingButtons.length; i++) {
     }, 500);
   });
 }
+
+const modalDescriptionPages = [guidePage1, guidePage2, guidePage3];
+
+leftArrowDescription.addEventListener('click', previousDescription);
+rightArrowDescription.addEventListener('click', nextDescription);
 
 leftArrow.addEventListener('click', previous);
 rightArrow.addEventListener('click', next);

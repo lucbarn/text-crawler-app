@@ -11,23 +11,33 @@
   <body>
     <div id="modal-container">
       <div id="modal-description">
+        <div class="arrows-container">
+          <canvas id="leftArrowDescription" class="left" width="40" height="40"></canvas>
+          <canvas id="rightArrowDescription" class="right" width="40" height="40"></canvas>
+        </div>
         <div class="closing-button"></div>
-        <p class="text-center">
+        <p id="guide-page-1" class="guide-page">
           <strong>Hello, welcome to Contextum!</strong><br><br>
-          Contextum lets you analyze a text and extract the phrases in which words appear.<br><br>
+          You can use the blue arrows in the upper-left corner to navigate through
+          this short introduction.
         </p>
-        <p class="text-left">
-          <span class="number">1</span>To start, enter one or more words you would like to find
-          in a text, such as an ebook or an article.<br><br>
-          <span class="number">2</span>Then, upload the text as a .txt file.<br><br>
-          <span class="number">3</span>Finally, click on the start button to see the context in which
-          the words you chose are used. If the search gives no results, try with some other words.
+        <p id="guide-page-2" class="guide-page">
+          Contextum lets you analyze a text and extract the phrases in which words appear.<br><br>
+          To start, enter one or more words you would like to find in a text, such as
+          an ebook or an article.<br><br>
+          In the <em>Words</em> section you can find the list
+          of words that have been entered. You can delete a word by clicking on it.
+        </p>
+        <p id="guide-page-3" class="guide-page">
+          After you have entered the words, upload the text file in .txt format.<br><br>
+          Finally, click on the start button to see the context in which the words
+          you chose are used. If the search gives no results, try with some other words.
         </p>
       </div>
       <div id="modal-words">
-        <div id="arrows-container">
-          <canvas id="left" width="40" height="40"></canvas>
-          <canvas id="right" width="40" height="40"></canvas>
+        <div class="arrows-container">
+          <canvas id="leftArrow" class="left" width="40" height="40"></canvas>
+          <canvas id="rightArrow" class="right" width="40" height="40"></canvas>
         </div>
         <div class="closing-button"></div>
         <ul id="modal-words-list"></ul>
