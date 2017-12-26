@@ -4,9 +4,9 @@ function createVariants(words) {
   const punctuationMarks = [',', '.', ':', ';', ')', '?', '!'];
   for (let word of words) {
     for (let suffix of suffixes) {
-      variants[word.toLowerCase() + suffix] = 1;
+      variants[word.trim().toLowerCase() + suffix] = 1;
       for (let punctuationMark of punctuationMarks) {
-        variants[word.toLowerCase() + suffix + punctuationMark] = 1;
+        variants[word.trim().toLowerCase() + suffix + punctuationMark] = 1;
       }
     }
   }
