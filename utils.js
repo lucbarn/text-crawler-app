@@ -1,12 +1,12 @@
 function createVariants(words) {
-  const variants = {};
+  const variants = new Set();
   const suffixes = ['', 's', 'ing', 'ed', 'd'];
   const punctuationMarks = [',', '.', ':', ';', ')', '?', '!'];
   for (let word of words) {
     for (let suffix of suffixes) {
-      variants[word.trim().toLowerCase() + suffix] = 1;
+      variants.add(word.trim().toLowerCase() + suffix);
       for (let punctuationMark of punctuationMarks) {
-        variants[word.trim().toLowerCase() + suffix + punctuationMark] = 1;
+        variants.add(word.trim().toLowerCase() + suffix + punctuationMark);
       }
     }
   }
@@ -17,7 +17,7 @@ function *crawlerGenerator(wordsList, text) {
   const textWords = text.split(/\s+/g);
   const variants = createVariants(wordsList);
   for (let i = 0; i < textWords.length; i++) {
-    if (variants[textWords[i].toLowerCase()] === 1) {
+    if (variants.has(textWords[i].toLowerCase())) {
       let j = i-1;
       let k = i;
       while ((j >= 0) && ('.;:?!'.indexOf(textWords[j].charAt(textWords[j].length - 1)) === -1)) {
