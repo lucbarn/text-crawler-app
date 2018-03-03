@@ -1,4 +1,8 @@
 function createVariants(words) {
+  // Given an array of words, return a set that contains some variants of
+  // each word. For example, an -s is added to the end of each word to represent
+  // the third-person singular. At the moment it is still a naive approach, since
+  // the same suffixes are added to every word.
   const variants = new Set();
   const suffixes = ['', 's', 'ing', 'ed', 'd'];
   const punctuationMarks = [',', '.', ':', ';', ')', '?', '!'];
