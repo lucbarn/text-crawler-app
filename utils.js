@@ -64,11 +64,10 @@ function showResults() {
 // i -> index of the next word to be displayed
 let i = 0;
 
-function lines(string) {
-  // modalContainer.clientWidth * 0.6 -> width of modal-words
-  // modalWords' width * 0.7 -> max width of modal-words-list
-  // 24 -> estimate of the width of upper case W (24px)
-  return Math.ceil((string.length * 24) / (modalContainer.clientWidth * 0.6 * 0.7));
+function lines(string, fontSize, containerWidth) {
+  // return an estimate of the number of lines required to
+  // display a given string
+  return Math.ceil((string.length * fontSize) / containerWidth);
 }
 
 function deleteWord(element) {
