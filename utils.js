@@ -80,19 +80,6 @@ function deleteWord(element) {
   }
 }
 
-function changeArrowsStyle() {
-  if (i < wordsList.length) {
-    rightArrow.style.display = 'block';
-  } else {
-    rightArrow.style.display = 'none';
-  }
-  if (i > modalWordsList.childElementCount) {
-    leftArrow.style.display = 'block';
-  } else {
-    leftArrow.style.display = 'none';
-  }
-}
-
 function renderWordsList() {
   // 0.8 -> max modalWordsList height is 80% of its container's height
   if (wordsList.length == 0) {
