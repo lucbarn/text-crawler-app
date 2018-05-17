@@ -22,17 +22,21 @@ export function *crawlerGenerator(wordsList: string[], text: string): IterableIt
   // one word of the list
   const textWords = text.split(/\s+/g);
   const variants = createVariants(wordsList);
+  let j = 0;
+  let k = 0;
+  while ((k < textWords.length) && ('.;:?!'.indexOf(textWords[k].charAt(textWords[k].length - 1)) === -1)) {
+    k++;
+  }
   for (let i = 0; i < textWords.length; i++) {
     if (variants.has(textWords[i].toLowerCase())) {
-      let j = i-1;
-      let k = i;
-      while ((j >= 0) && ('.;:?!'.indexOf(textWords[j].charAt(textWords[j].length - 1)) === -1)) {
-        j--;
-      }
+      yield (`${textWords[i].replace(/\.|,|;|:|\?|!/g, '').toUpperCase()}: ` + textWords.slice(j,i).join(' ') + ` <strong>${textWords[i]}</strong> ` + textWords.slice(i+1,k+1).join(' '));
+    }
+    if (i === k) {
+      j = i+1;
+      k = i+1;
       while ((k < textWords.length) && ('.;:?!'.indexOf(textWords[k].charAt(textWords[k].length - 1)) === -1)) {
         k++;
       }
-      yield (`${textWords[i].replace(/\.|,|;|:|\?|!/g, '').toUpperCase()}: ` + textWords.slice(j+1,i).join(' ') + ` <strong>${textWords[i]}</strong> ` + textWords.slice(i+1,k+1).join(' '));
     }
   }
 }
