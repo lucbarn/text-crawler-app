@@ -5,7 +5,7 @@ export function createVariants(words: string[]): Set<string> {
   // the same suffixes are added to every word.
   const variants = new Set();
   const suffixes = ['', 's', 'ing', 'ed', 'd'];
-  const punctuationMarks = [',', '.', ':', ';', ')', '?', '!'];
+  const punctuationMarks = [',', '.', ':', ';', ')', '?', '!', '"'];
   for (let word of words) {
     for (let suffix of suffixes) {
       variants.add(word.trim().toLowerCase() + suffix);
