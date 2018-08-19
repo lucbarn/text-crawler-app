@@ -1,12 +1,14 @@
 export function createVariants(words: string[]): Set<string> {
   // Given an array of words, return a set that contains some variants of
   // each word. For example, an -s is added to the end of each word to represent
-  // the third-person singular. At the moment it is still a naive approach, since
-  // the same suffixes are added to every word.
+  // the third-person singular.
   const variants = new Set();
-  const suffixes = ['', 's', 'ing', 'ed', 'd'];
+  const baseSuffixes = ['', 's', 'ing', 'ed', 'd'];
   const punctuationMarks = [',', '.', ':', ';', ')', '?', '!', '"'];
+  let suffixes;
   for (let word of words) {
+    // add cases for doubled final letter
+    suffixes = baseSuffixes.concat([word[word.length - 1] + 'ing', word[word.length - 1] + 'ed']);
     for (let suffix of suffixes) {
       variants.add(word.trim().toLowerCase() + suffix);
       for (let punctuationMark of punctuationMarks) {
@@ -18,7 +20,7 @@ export function createVariants(words: string[]): Set<string> {
 }
 
 export function *crawlerGenerator(wordsList: string[], text: string): IterableIterator<string> {
-  // Given a list of words and a text, yield the phrases that contain at least
+  // Given a list of words and a string, yield the phrases of the string that contain at least
   // one word of the list
   const textWords = text.split(/\s+/g);
   const variants = createVariants(wordsList);
