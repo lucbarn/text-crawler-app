@@ -1,0 +1,81 @@
+:host {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  width: 90%;
+  max-width: 1000px;
+  height: 90%;
+  max-height: 600px;
+  margin: auto;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  z-index: 2;
+}
+
+.arrows-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 65px;
+  height: 30px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 30px;
+  border-left: 3px solid blue;
+  border-bottom: 3px solid blue;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.arrow:hover {
+  cursor: pointer;
+}
+
+#left-arrow {
+  left: 6.2132px;
+  transform: translateY(-50%) rotate(45deg);
+  z-index: 1;
+}
+
+#right-arrow {
+  right: 6.2132px;
+  transform: translateY(-50%) rotate(225deg);
+  z-index: 1;
+}
+
+#arrows-cover {
+  position: absolute;
+  width: calc(100% - 42.4264px);
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+#modal-words-list {
+  position: relative;
+  max-width: 70%;
+  padding: 0px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.word {
+  position: relative;
+  margin: 10px 0px;
+  box-sizing: border-box;
+  font-size: 25px;
+  line-height: 30px;
+  list-style: none;
+}
+
+li.word:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,17 @@
+<div id="navbar-container" [ngClass]="{'mobile-pile-active': mobilePileActive}">
+  <div id="pile" (click)="changePileStatus()">
+    <div id="top-layer" class="layer"></div>
+    <div id="middle-layer" class="layer"></div>
+    <div id="bottom-layer" class="layer"></div>
+  </div>
+  <div id="nav-buttons-wrapper">
+    <div id="nav-buttons">
+      <button mat-button disableRipple="true" id="words" class="nav-button" (click)="renderWordsSignal(); changeModalVisibility('words')">
+        Words
+      </button>
+      <button mat-button disableRipple="true" id="ebooks" class="nav-button" (click)="changeModalVisibility('ebooks')">
+        Ebooks
+      </button>
+    </div>
+  </div>
+</div>

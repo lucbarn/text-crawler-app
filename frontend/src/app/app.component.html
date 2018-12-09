@@ -1,0 +1,41 @@
+<div id="modal-container" [ngClass]="{'hidden': !modalVisible}">
+  <modal-words [ngClass]="{'hidden': modalContent !== 'words'}"
+               [wordsDisplayed]="wordsDisplayed"
+               [wordsListLength]="wordsList.length"
+               [index]="index"
+               (modalVisibilityEmitter)="changeModalVisibility($event)">
+  </modal-words>
+  <modal-ebooks [ngClass]="{'hidden': modalContent !== 'ebooks'}"
+                (modalVisibilityEmitter)="changeModalVisibility($event)"
+                (modalResetEmitter)="resetMaterial()">
+  </modal-ebooks>
+</div>
+<navbar (modalVisibilityEmitter)="changeModalVisibility($event)"></navbar>
+<main>
+  <div id="form-container">
+    <form id="form">
+      <div id="box-container">
+        <input id="box"
+               name="box"
+               [(ngModel)]="currentWord"
+               type="text"
+               (keyup.enter)="addWord()"
+               placeholder="Add a new word...">
+      </div>
+    </form>
+  </div>
+  <div id="buttons-container">
+    <button mat-stroked-button color="primary" id="clear-button" (click)="clear()">
+      Clear
+    </button>
+    <button mat-stroked-button color="primary" id="start-button" (click)="analyzeText(true)">
+      Start
+    </button>
+  </div>
+  <div id="text-area">
+    <p *ngFor="let phrase of phrasesDisplayed" [innerHTML]="phrase"></p>
+  </div>
+  <button mat-stroked-button color="primary" id="show-more-button" *ngIf="morePhrases" (click)="analyzeText(false)">
+    Show more
+  </button>
+</main>
