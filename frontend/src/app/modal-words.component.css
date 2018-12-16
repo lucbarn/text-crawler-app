@@ -76,6 +76,6 @@
   list-style: none;
 }
 
-li.word:hover {
+#modal-words-list > li.word:hover {
   cursor: pointer;
 }

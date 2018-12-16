@@ -21,6 +21,14 @@
   margin: auto;
 }
 
+#modal-ebooks-list > ul {
+  list-style-type: none;
+}
+
+#modal-ebooks-list > ul > li {
+  margin: 10px 0px;
+}
+
 #radio-group {
   display: inline-flex;
   flex-direction: column;
