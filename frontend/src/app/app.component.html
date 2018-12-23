@@ -33,7 +33,7 @@
     </button>
   </div>
   <div id="text-area">
-    <p *ngFor="let phrase of phrasesDisplayed" [innerHTML]="phrase"></p>
+    <p *ngFor="let el of phrasesData; trackBy: trackByPhrases" [innerHTML]="el[0]"></p>
   </div>
   <button mat-stroked-button color="primary" id="show-more-button" *ngIf="morePhrases" (click)="analyzeText(false)">
     Show more

@@ -8,7 +8,10 @@ def get_ebooks_names():
 def crawler_generator(words_list):
     ebooks_names = get_ebooks_names()
     words_set = set(words_list)
+    phrase_index = 0
     for ebook_name in ebooks_names:
+        # every ebook title gets assigned an index, so phrases_index is incremented by 1
+        phrase_index += 1
         ebook_title = ' '.join(map(lambda word: word.title(), ebook_name.strip('.txt').split('_')))
         with open('./ebooks/{ebook_name}'.format(ebook_name=ebook_name)) as in_file:
             text = in_file.read()
@@ -28,7 +31,8 @@ def crawler_generator(words_list):
                         res += ' '.join(line_words[:j])
                         res += ' <strong>' + line_words[j] + '</strong> '
                         res += ' '.join(line_words[j+1:])
-                        yield (ebook_title, res.strip())
+                        yield (ebook_title, res.strip(), phrase_index)
+                        phrase_index += 1
                     line_words = []
                     line_matches = []
                     k = i+1

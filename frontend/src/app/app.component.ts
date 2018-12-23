@@ -23,7 +23,7 @@ export class AppComponent implements OnDestroy {
   currentWord: string;
   modalDimensions: Object = {'width': 0, 'height': 0};
   spaceLeft: number;
-  phrasesDisplayed: string[] = [];
+  phrasesData: string[][] = [];
   text: string;
   morePhrases: boolean = false;
   renderServiceSubscription: Subscription;
@@ -74,12 +74,16 @@ export class AppComponent implements OnDestroy {
 
   clear(): void {
     this.morePhrases = false;
-    this.phrasesDisplayed = [];
+    this.phrasesData = [];
+  }
+
+  trackByPhrases(index: number, dataElement: any[]): number {
+    return dataElement[1];
   }
 
   analyzeText(firstCall: boolean): void {
     this.ebooksService.getPhrases(this.wordsList, firstCall).subscribe(res => {
-      this.phrasesDisplayed.push(...res.phrases);
+      this.phrasesData.push(...res.phrases);
       this.morePhrases = !res.completed;
     });
   }

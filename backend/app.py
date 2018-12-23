@@ -29,6 +29,7 @@ def get_phrases():
         first_res = []
         currentCrawler['crawler'] = crawler_generator(words)
         currentCrawler['next_res'] = None
+        currentCrawler['current_ebook'] = None
         currentCrawler['completed'] = False
         for i in range(20):
             try:
@@ -51,11 +52,12 @@ def get_phrases():
     else:
         currentCrawler['completed'] = False
     formatted_res = []
-    for ebook, phrase in res:
+    for ebook, phrase, phrase_index in res:
         if ebook != currentCrawler['current_ebook']:
-            formatted_res.append('<strong>' + ebook + '<strong>')
+            formatted_res.append(['<strong>' + ebook + '<strong>', phrase_index - 1])
             currentCrawler['current_ebook'] = ebook
-        formatted_res.append(phrase)
+        formatted_res.append([phrase, phrase_index])
+    print(formatted_res)
     return jsonify({'phrases': formatted_res, 'completed': currentCrawler['completed']})
 
 if __name__ == '__main__':
