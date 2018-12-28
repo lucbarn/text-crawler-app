@@ -3,8 +3,6 @@ import { Observable, Subscription } from 'rxjs';
 
 import { EbooksService } from './services/ebooks.service';
 
-import { MatSelectModule } from '@angular/material/select';
-
 @Component({
   selector: 'modal-ebooks',
   templateUrl: './modal-ebooks.component.html',
@@ -12,12 +10,8 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class ModalEbooksComponent {
   @Output() modalVisibilityEmitter: EventEmitter<string> = new EventEmitter<string>();
-  @Output() modalEbookEmitter: EventEmitter<string> = new EventEmitter<string>();
-  @Output() modalResetEmitter: EventEmitter<string> = new EventEmitter<string>();
 
   ebooksList$: Observable<string[]>;
-
-  selectedEbook: string;
 
   constructor(private ebooksService: EbooksService) {}
 

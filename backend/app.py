@@ -14,7 +14,8 @@ def index():
 @app.route('/ebooks')
 def get_ebooks():
     filenames = get_ebooks_names()
-    return jsonify({'ebooks_names': filenames})
+    ebooks_titles = [format_title(ebook_title) for ebook_title in filenames]
+    return jsonify({'ebooks_names': ebooks_titles})
 
 @app.route('/phrases', methods=['POST'])
 def get_phrases():

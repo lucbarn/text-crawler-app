@@ -1,5 +1,9 @@
 from os import walk
 
+def format_title(s):
+    res = ' '.join(map(lambda word: word.title(), s.strip('.txt').split('_')))
+    return res
+
 def get_ebooks_names():
     folder_structure = walk('./ebooks')
     *head, filenames = next(folder_structure)
@@ -10,9 +14,9 @@ def crawler_generator(words_list):
     words_set = set(words_list)
     phrase_index = 0
     for ebook_name in ebooks_names:
-        # every ebook title gets assigned an index, so phrases_index is incremented by 1
+        # every ebook title gets assigned an index, so phrase_index is incremented by 1
         phrase_index += 1
-        ebook_title = ' '.join(map(lambda word: word.title(), ebook_name.strip('.txt').split('_')))
+        ebook_title = format_title(ebook_name)
         with open('./ebooks/{ebook_name}'.format(ebook_name=ebook_name)) as in_file:
             text = in_file.read()
             text_words = text.split()

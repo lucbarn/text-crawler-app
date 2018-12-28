@@ -11,13 +11,14 @@
   background-color: white;
   border-radius: 5px;
   text-align: center;
+  overflow-y: scroll;
   z-index: 2;
 }
 
 #modal-ebooks-list {
   position: relative;
   max-width: 70%;
-  padding: 0px;
+  padding: 100px 0px;
   margin: auto;
 }
 
@@ -27,32 +28,4 @@
 
 #modal-ebooks-list > ul > li {
   margin: 10px 0px;
-}
-
-#radio-group {
-  display: inline-flex;
-  flex-direction: column;
-  margin: auto;
-}
-
-.ebook-radio-button {
-  width: 100%;
-  margin: 10px auto;
-  padding: 5px;
-  text-align: left;
-}
-
-#buttons-container {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 350px;
-  display: flex;
-}
-
-#reset-button, #confirm-button {
-  width: 140px;
-  height: 40px;
-  margin: 0px auto;
 }

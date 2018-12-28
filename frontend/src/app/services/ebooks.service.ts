@@ -32,7 +32,10 @@ export class EbooksService {
         catchError((error: any): Observable<any> => {
           console.log('An error occurred!');
           console.error(error);
-          return of({});
+          return of({
+            'phrases': [],
+            'completed': true
+          });
         })
       );
   }

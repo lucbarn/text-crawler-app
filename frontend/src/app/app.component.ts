@@ -47,8 +47,8 @@ export class AppComponent implements OnDestroy {
       }
     });
 
-    this.deleteServiceSubscription = this.deleteService.getObservable().subscribe((word: string) => {
-      this.deleteWord(word);
+    this.deleteServiceSubscription = this.deleteService.getObservable().subscribe((words: string[]) => {
+      this.deleteWords(words);
     });
   }
 
@@ -149,6 +149,10 @@ export class AppComponent implements OnDestroy {
         this.wordsDisplayed = [];
       }
     }
+  }
+
+  deleteWords(words: string[]): void {
+    this.wordsList = this.wordsList.filter(word => !words.includes(word));
   }
 
   assignDocument(document: string): void {

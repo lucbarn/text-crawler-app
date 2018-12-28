@@ -1,13 +1,12 @@
 <div id="modal-container" [ngClass]="{'hidden': !modalVisible}">
   <modal-words [ngClass]="{'hidden': modalContent !== 'words'}"
-               [wordsDisplayed]="wordsDisplayed"
+               [wordsList]="wordsList"
                [wordsListLength]="wordsList.length"
                [index]="index"
                (modalVisibilityEmitter)="changeModalVisibility($event)">
   </modal-words>
   <modal-ebooks [ngClass]="{'hidden': modalContent !== 'ebooks'}"
-                (modalVisibilityEmitter)="changeModalVisibility($event)"
-                (modalResetEmitter)="resetMaterial()">
+                (modalVisibilityEmitter)="changeModalVisibility($event)">
   </modal-ebooks>
 </div>
 <navbar (modalVisibilityEmitter)="changeModalVisibility($event)"></navbar>

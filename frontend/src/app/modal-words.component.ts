@@ -9,7 +9,7 @@ import { DeleteService } from './services/delete.service';
   styleUrls: ['./modal-words.component.css']
 })
 export class ModalWordsComponent {
-  @Input() wordsDisplayed: string[];
+  @Input() wordsList: string[];
   @Input() wordsListLength: number;
   @Input() index: number;
   @Output() modalVisibilityEmitter: EventEmitter<string> = new EventEmitter<string>();
@@ -20,15 +20,8 @@ export class ModalWordsComponent {
     this.modalVisibilityEmitter.emit(content);
   }
 
-  next(): void {
-    this.navservice.next();
-  }
-
-  previous(): void {
-    this.navservice.previous();
-  }
-
-  deleteWord(word): void {
-    this.deleteservice.deleteWord(word);
+  deleteWords(selectedWords: any[]): void {
+    const values = selectedWords.map(el => el.value);
+    this.deleteservice.deleteWords(values);
   }
 }
