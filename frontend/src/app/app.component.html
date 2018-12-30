@@ -32,7 +32,7 @@
     </button>
   </div>
   <div id="text-area">
-    <p *ngFor="let el of phrasesData; trackBy: trackByPhrases" [innerHTML]="el[0]"></p>
+    <p *ngFor="let el of phrasesData; trackBy: trackByPhrases" [innerHTML]="el[0]" [ngClass]="{'ebook-title': el[2] === 'title'}"></p>
   </div>
   <button mat-stroked-button color="primary" id="show-more-button" *ngIf="morePhrases" (click)="analyzeText(false)">
     Show more
