@@ -66,8 +66,10 @@ export class AppComponent implements OnDestroy {
   }
 
   addWord(): void {
-    if ((this.currentWord.length < 40) && (this.wordsList.indexOf(this.currentWord) === -1)) {
-      this.wordsList.push(this.currentWord);
+    const trimmedWord = this.currentWord.trim();
+    const n = trimmedWord.length;
+    if ((n > 0) && (n < 40) && (!this.wordsList.includes(trimmedWord))) {
+      this.wordsList.push(trimmedWord);
     }
     this.currentWord = '';
   }
