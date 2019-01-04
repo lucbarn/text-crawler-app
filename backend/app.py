@@ -23,33 +23,17 @@ def get_phrases():
     words = content['wordsList']
     new_analysis = content['newAnalysis'] == 1
     if new_analysis:
-        first_res = []
         text_crawler.reset()
         text_crawler.set_generator(words)
-        for i in range(20):
-            phrase = text_crawler.get_next()
-            if phrase is None:
-                break
-            else:
-                first_res.append(phrase)
-        text_crawler.set_next_res(first_res)
     res = text_crawler.get_next_res()
-    next_res = []
-    for i in range(20):
-        phrase = text_crawler.get_next()
-        if phrase is None:
-            break
-        else:
-            next_res.append(phrase)
-    text_crawler.set_next_res(next_res)
-    if len(next_res) == 0:
-        text_crawler.set_completed()
     formatted_res = []
+    current_ebook = text_crawler.get_current_ebook()
     for ebook, phrase, phrase_index in res:
-        if ebook != text_crawler.get_current_ebook():
+        if ebook != current_ebook:
             formatted_res.append(['<strong>' + ebook + '<strong>', phrase_index - 1, 'title'])
-            text_crawler.set_current_ebook(ebook)
+            current_ebook = ebook
         formatted_res.append([phrase, phrase_index, 'phrase'])
+    text_crawler.set_current_ebook(ebook)
     return jsonify({'phrases': formatted_res, 'completed': text_crawler.get_completed()})
 
 if __name__ == '__main__':

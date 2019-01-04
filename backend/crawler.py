@@ -7,14 +7,10 @@ class Crawler:
         self.current_ebook = None
         self.completed = False
 
-    def set_generator(self, words_list):
-        self.crawler_generator = crawler_generator(words_list)
-
-    def set_next_res(self, next_res):
-        self.next_res = next_res
-
     def get_next_res(self):
-        return self.next_res
+        res = self.next_res
+        self.next_res = self.get_phrases(20)
+        return res
 
     def set_current_ebook(self, ebook):
         self.current_ebook = ebook
@@ -22,18 +18,27 @@ class Crawler:
     def get_current_ebook(self):
         return self.current_ebook
 
-    def set_completed(self):
-        self.completed = True
-
     def get_completed(self):
         return self.completed
 
-    def get_next(self):
-        try:
-            res = next(self.crawler_generator)
-        except:
-            res = None
+    def get_phrases(self, n):
+        res = []
+        for i in range(n):
+            try:
+                phrase = next(self.crawler_generator)
+            except:
+                phrase = None
+            if phrase is None:
+                break
+            else:
+                res.append(phrase)
+        if len(res) == 0:
+            self.completed = True
         return res
+
+    def set_generator(self, words_list):
+        self.crawler_generator = crawler_generator(words_list)
+        self.next_res = self.get_phrases(20)
 
     def reset(self):
         self.crawler_generator = None
