@@ -21,3 +21,7 @@ again this can be done either manually or by running:
 
 Finally, the app is run with:  
 `python3 app.py`
+
+## ebooks
+
+In order to make the app work, ebooks in txt format have to be added to backend/ebooks
