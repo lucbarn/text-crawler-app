@@ -33,7 +33,7 @@ def get_phrases():
             formatted_res.append(['<strong>' + ebook + '<strong>', phrase_index - 1, 'title'])
             current_ebook = ebook
         formatted_res.append([phrase, phrase_index, 'phrase'])
-    text_crawler.set_current_ebook(ebook)
+    text_crawler.set_current_ebook(current_ebook)
     return jsonify({'phrases': formatted_res, 'completed': text_crawler.get_completed()})
 
 if __name__ == '__main__':

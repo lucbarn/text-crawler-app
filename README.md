@@ -3,7 +3,7 @@
 This repository contains the code for a web application for extracting from a list of ebooks the phrases that
 contain at least one word of a given list, entered by the user.
 
-## usage
+## Build
 
 To build the project and create the production bundle the following command is used:  
 `cd frontend`  
@@ -22,6 +22,6 @@ again this can be done either manually or by running:
 Finally, the app is run with:  
 `python3 app.py`
 
-## ebooks
+## Ebooks
 
-In order to make the app work, ebooks in txt format have to be added to backend/ebooks
+In order to make the app work, ebooks in txt format (or more generally text files) have to be added to backend/ebooks
