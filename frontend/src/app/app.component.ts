@@ -84,6 +84,9 @@ export class AppComponent implements OnDestroy {
   }
 
   analyzeText(firstCall: boolean): void {
+    if (firstCall) {
+      this.clear();
+    }
     this.ebooksService.getPhrases(this.wordsList, firstCall).subscribe(res => {
       this.phrasesData.push(...res.phrases);
       this.morePhrases = !res.completed;
