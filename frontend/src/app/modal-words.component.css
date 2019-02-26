@@ -28,6 +28,16 @@
   margin: auto;
 }
 
+#message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: sans-serif;
+  font-size: 20px;
+  color: #414141;
+}
+
 .word {
   text-align: left;
 }
