@@ -22,6 +22,12 @@ again this can be done either manually or by running:
 Finally, the app is run with:  
 `python3 app.py`
 
+## Usage
+
+Add the words, one by one, and then click on the start button. You can see the list of words by clicking on the Words button
+in the upper-right corner and delete them if necessary. You can also see the list of ebooks by clicking on the Ebooks button.
+
 ## Ebooks
 
-In order to make the app work, ebooks in txt format (or more generally text files) have to be added to backend/ebooks
+In order to make the app work, ebooks in txt format (or more generally text files) have to be added to backend/ebooks.
+This has to be done manually before the app is run.
