@@ -25,6 +25,7 @@ export class AppComponent implements OnDestroy {
   spaceLeft: number;
   phrasesData: string[][] = [];
   text: string;
+  noResults: boolean = false;
   morePhrases: boolean = false;
   renderServiceSubscription: Subscription;
   navServiceSubscription: Subscription;
@@ -75,6 +76,7 @@ export class AppComponent implements OnDestroy {
   }
 
   clear(): void {
+    this.noResults = false;
     this.morePhrases = false;
     this.phrasesData = [];
   }
@@ -88,6 +90,9 @@ export class AppComponent implements OnDestroy {
       this.clear();
     }
     this.ebooksService.getPhrases(this.wordsList, firstCall).subscribe(res => {
+      if (firstCall && (res.phrases.length === 0)) {
+        this.noResults = true;
+      }
       this.phrasesData.push(...res.phrases);
       this.morePhrases = !res.completed;
     });
