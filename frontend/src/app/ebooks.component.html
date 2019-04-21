@@ -1,0 +1,9 @@
+<div id="external-container">
+  <div id="ebooks-list">
+    <ul>
+      <li *ngFor="let ebook of ebooksList$ | async">
+        {{ ebook }}
+      </li>
+    </ul>
+  </div>
+</div>

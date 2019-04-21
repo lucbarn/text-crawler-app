@@ -4,12 +4,18 @@
     <div id="middle-layer" class="layer"></div>
     <div id="bottom-layer" class="layer"></div>
   </div>
+  <button mat-button disableRipple="true" id="add-phrase-button" class="nav-button" (click)="changeModalVisibility()">
+    New
+  </button>
   <div id="nav-buttons-wrapper">
     <div id="nav-buttons">
-      <button mat-button disableRipple="true" id="words" class="nav-button" (click)="renderWordsSignal(); changeModalVisibility('words')">
+      <button mat-button disableRipple="true" id="words" class="nav-button" (click)="changeMainContent('home')">
+        Home
+      </button>
+      <button mat-button disableRipple="true" id="words" class="nav-button" (click)="renderWordsSignal(); changeMainContent('words')">
         Words
       </button>
-      <button mat-button disableRipple="true" id="ebooks" class="nav-button" (click)="changeModalVisibility('ebooks')">
+      <button mat-button disableRipple="true" id="ebooks" class="nav-button" (click)="changeMainContent('ebooks')">
         Ebooks
       </button>
     </div>

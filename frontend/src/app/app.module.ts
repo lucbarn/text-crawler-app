@@ -7,8 +7,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar.component';
-import { ModalWordsComponent } from './modal-words.component';
-import { ModalEbooksComponent } from './modal-ebooks.component';
+import { HomeComponent } from './home.component';
+import { WordsComponent } from './words.component';
+import { EbooksComponent } from './ebooks.component';
+import { ModalAddPhraseComponent } from './modal-add-phrase.component';
 
 import { RenderService } from './services/render.service';
 import { NavService } from './services/nav.service';
@@ -19,8 +21,10 @@ import { EbooksService } from './services/ebooks.service';
   declarations: [
     AppComponent,
     NavbarComponent,
-    ModalWordsComponent,
-    ModalEbooksComponent
+    HomeComponent,
+    WordsComponent,
+    EbooksComponent,
+    ModalAddPhraseComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,4 @@
 body {
-  padding: 0px;
-  margin: 0px;
   min-height: 100vh;
 }
 
@@ -14,104 +12,10 @@ body {
   visibility: visible;
   opacity: 1;
   transition: all 0.5s;
-  z-index: 2;
+  z-index: 200;
 }
 
 a {
   color: rgb(55,175,201);
   text-decoration: none;
-}
-
-main {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 1280px;
-  margin: 150px auto;
-}
-
-#form-container {
-  display: flex;
-  width: 100%;
-  margin: 50px 0px;
-}
-
-#form {
-  width: 600px;
-  max-width: 80%;
-  margin: auto;
-}
-
-#box-container {
-  width: 100%;
-  display: flex;
-  padding: 8px;
-  box-sizing: border-box;
-  border-radius: 5px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-#box {
-  width: 100%;
-  font-size: 32px;
-  padding: 8px 10px;
-  box-sizing: border-box;
-  border: none;
-  outline: none;
-}
-
-#box::placeholder {
-  opacity: 0.25;
-}
-
-#buttons-container {
-  display: flex;
-  width: 350px;
-  align-content: space-between;
-  margin: auto;
-}
-
-#clear-button, #start-button {
-  width: 140px;
-  height: 40px;
-  margin: 0px auto;
-}
-
-#text-area {
-  position: relative;
-  width: 100%;
-  margin: 100px auto 0px auto;
-  padding: 0px 50px;
-  box-sizing: border-box;
-}
-
-#message {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: sans-serif;
-  font-size: 20px;
-  color: #414141;
-}
-
-#text-area > p {
-  font-family: sans-serif;
-  margin: 10px 0px;
-}
-
-#text-area > p.ebook-title {
-  margin: 70px 0px 20px 0px;
-}
-
-#show-more-button {
-  margin: 50px auto;
-}
-
-.text-left {
-  text-align: left;
-}
-
-.text-center {
-  text-align: center;
 }

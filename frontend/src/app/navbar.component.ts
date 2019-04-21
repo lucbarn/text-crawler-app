@@ -8,12 +8,17 @@ import { RenderService } from './services/render.service';
 })
 export class NavbarComponent {
   @Output() modalVisibilityEmitter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() mainContentEmitter: EventEmitter<string> = new EventEmitter<string>();
   mobilePileActive: boolean = false;
 
   constructor(private renderservice: RenderService) {}
 
-  changeModalVisibility(content) {
-    this.modalVisibilityEmitter.emit(content);
+  changeModalVisibility() {
+    this.modalVisibilityEmitter.emit();
+  }
+
+  changeMainContent(content) {
+    this.mainContentEmitter.emit(content);
   }
 
   renderWordsSignal() {

@@ -1,32 +1,33 @@
 :host {
   position: relative;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  width: 90%;
-  max-width: 1000px;
-  height: 90%;
-  max-height: 600px;
-  margin: auto;
-  background-color: white;
-  border-radius: 5px;
-  text-align: center;
-  overflow-y: scroll;
-  z-index: 2;
+  margin-top: 70px;
 }
 
-#modal-ebooks-list {
+#external-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  max-width: 1000px;
+  align-content: center;
+  text-align: center;
+  margin: auto;
+}
+
+#ebooks-list {
   position: relative;
   max-width: 70%;
   padding: 100px 0px;
   margin: auto;
 }
 
-#modal-ebooks-list > ul {
+#ebooks-list > ul {
   list-style-type: none;
 }
 
-#modal-ebooks-list > ul > li {
+#ebooks-list > ul > li {
   font-family: sans-serif;
   margin: 10px 0px;
 }

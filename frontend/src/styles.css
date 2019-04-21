@@ -10,35 +10,6 @@
   opacity: 0 !important;
 }
 
-.closing-button {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 30px;
-  height: 30px;
-}
-
-.closing-button:hover {
-  cursor: pointer;
-}
-
-.closing-button-line {
-  position: absolute;
-  top: 50%;
-  left: 0%;
-  width: 100%;
-  height: 4px;
-  background-color: #e44014;
-}
-
-.backwards-line {
-  transform: translateY(-50%) rotate(45deg);
-}
-
-.forwards-line {
-  transform: translateY(-50%) rotate(-45deg);
-}
-
 .modal-open {
   overflow: hidden;
 }

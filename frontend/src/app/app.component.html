@@ -1,41 +1,16 @@
+<navbar (modalVisibilityEmitter)="changeModalVisibility()"
+        (mainContentEmitter)="changeMainContent($event)">
+</navbar>
 <div id="modal-container" [ngClass]="{'hidden': !modalVisible}">
-  <modal-words *ngIf="modalContent == 'words'"
-               [wordsList]="wordsList"
-               [wordsListLength]="wordsList.length"
-               [index]="index"
-               (modalVisibilityEmitter)="changeModalVisibility($event)">
-  </modal-words>
-  <modal-ebooks *ngIf="modalContent == 'ebooks'"
-                (modalVisibilityEmitter)="changeModalVisibility($event)">
-  </modal-ebooks>
+  <modal-add-phrase *ngIf="modalVisible"
+                    (modalVisibilityEmitter)="changeModalVisibility()">
+  </modal-add-phrase>
 </div>
-<navbar (modalVisibilityEmitter)="changeModalVisibility($event)"></navbar>
-<main>
-  <div id="form-container">
-    <form id="form">
-      <div id="box-container">
-        <input id="box"
-               name="box"
-               [(ngModel)]="currentWord"
-               type="text"
-               (keyup.enter)="addWord()"
-               placeholder="Add a new word...">
-      </div>
-    </form>
-  </div>
-  <div id="buttons-container">
-    <button mat-stroked-button color="primary" id="clear-button" (click)="clear()">
-      Clear
-    </button>
-    <button mat-stroked-button color="primary" id="start-button" (click)="analyzeText(true)">
-      Start
-    </button>
-  </div>
-  <div id="text-area">
-    <p id="message" *ngIf="noResults">No results found</p>
-    <p *ngFor="let el of phrasesData; trackBy: trackByPhrases" [innerHTML]="el[0]" [ngClass]="{'ebook-title': el[2] === 'title'}"></p>
-  </div>
-  <button mat-stroked-button color="primary" id="show-more-button" *ngIf="morePhrases" (click)="analyzeText(false)">
-    Show more
-  </button>
-</main>
+<home *ngIf="mainContent == 'home'"
+      (wordsListEmitter)="setWordsList($event)">
+</home>
+<words *ngIf="mainContent == 'words'"
+       [wordsList]="wordsList"
+       [index]="index">
+</words>
+<ebooks *ngIf="mainContent == 'ebooks'"></ebooks>

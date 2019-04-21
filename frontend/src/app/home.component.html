@@ -1,0 +1,29 @@
+<main>
+  <div id="form-container">
+    <form id="form">
+      <div id="box-container">
+        <input id="box"
+               name="box"
+               [(ngModel)]="currentWord"
+               type="text"
+               (keyup.enter)="addWord()"
+               placeholder="Add a new word...">
+      </div>
+    </form>
+  </div>
+  <div id="buttons-container">
+    <button mat-stroked-button color="primary" id="clear-button" (click)="clear()">
+      Clear
+    </button>
+    <button mat-stroked-button color="primary" id="start-button" (click)="analyzeText(true)">
+      Start
+    </button>
+  </div>
+  <div id="text-area">
+    <p id="no-results-message" *ngIf="noResults">No results found</p>
+    <p *ngFor="let el of phrasesData; trackBy: trackByPhrases" [innerHTML]="el[0]" [ngClass]="{'ebook-title': el[2] === 'title'}"></p>
+  </div>
+  <button mat-stroked-button color="primary" id="show-more-button" *ngIf="morePhrases" (click)="analyzeText(false)">
+    Show more
+  </button>
+</main>

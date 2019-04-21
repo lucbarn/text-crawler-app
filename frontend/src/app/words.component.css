@@ -1,18 +1,19 @@
 :host {
   position: relative;
+  width: 100%;
+  display: flex;
+  margin-top: 70px;
+}
+
+#external-container {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
   width: 90%;
   max-width: 1000px;
-  height: 90%;
-  max-height: 600px;
-  margin: auto;
-  background-color: white;
-  border-radius: 5px;
+  align-content: center;
   text-align: center;
-  overflow-y: scroll;
-  z-index: 2;
+  margin: auto;
 }
 
 #delete-button {
@@ -21,14 +22,14 @@
   left: 20px;
 }
 
-#modal-words-list {
+#words-list {
   width: 40%;
   max-width: 500px;
   padding: 100px 0px;
   margin: auto;
 }
 
-#message {
+#no-words-message {
   position: absolute;
   top: 50%;
   left: 50%;

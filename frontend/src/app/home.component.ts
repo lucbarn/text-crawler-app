@@ -1,4 +1,4 @@
-import { Component, Input, HostListener, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Output, HostListener, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Observable } from 'rxjs';
 import { RenderService } from './services/render.service';
@@ -9,14 +9,15 @@ import { Renderer2 } from '@angular/core';
 import { lines } from './utils';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class AppComponent implements OnDestroy {
-  @Input() wordsList: string[] = [];
+export class HomeComponent implements OnDestroy {
+  @Output() wordsListEmitter: EventEmitter<string[]> = new EventEmitter<string[]>();
   modalVisible: boolean = false;
-  mainContent: string = 'home';
+  modalContent: string = '';
+  wordsList: string[] = [];
   wordsDisplayed: string[] = [];
   // index of the next word to be displayed
   index: number = 0;
@@ -53,24 +54,17 @@ export class AppComponent implements OnDestroy {
     });
   }
 
-  changeMainContent(event): void {
-    this.mainContent = event;
+  changeModalVisibility(event): void {
+    this.modalContent = event;
     if (event === 'words') {
       this.renderService.renderWords();
     }
-  }
-
-  changeModalVisibility(): void {
-    this.modalVisible = !this.modalVisible;
+    this.modalVisible = event ? true : false;
     if (this.modalVisible) {
       this.renderer.addClass(document.body, 'modal-open');
     } else {
       this.renderer.removeClass(document.body, 'modal-open');
     }
-  }
-
-  setWordsList(wordsList): void {
-    this.wordsList = wordsList;
   }
 
   addWord(): void {
@@ -80,6 +74,7 @@ export class AppComponent implements OnDestroy {
       this.wordsList.push(trimmedWord);
     }
     this.currentWord = '';
+    this.wordsListEmitter.emit(this.wordsList);
   }
 
   clear(): void {
@@ -87,6 +82,7 @@ export class AppComponent implements OnDestroy {
     this.morePhrases = false;
     this.phrasesData = [];
   }
+
 
   trackByPhrases(index: number, dataElement: any[]): number {
     return dataElement[1];

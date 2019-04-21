@@ -5,6 +5,7 @@
   height: 70px;
   background-color: #0a65b3;
   box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  z-index: 100;
 }
 
 #navbar-container {
@@ -13,11 +14,15 @@
   height: 100%;
 }
 
-#logo {
-  margin: auto auto auto 20px;
+#add-phrase-button {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  width: 50px;
   font-family: sans-serif;
-  font-size: 25px;
-  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
 }
 
 #pile {
