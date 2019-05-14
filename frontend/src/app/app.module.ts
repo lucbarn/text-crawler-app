@@ -10,12 +10,12 @@ import { NavbarComponent } from './navbar.component';
 import { HomeComponent } from './home.component';
 import { WordsComponent } from './words.component';
 import { EbooksComponent } from './ebooks.component';
-import { ModalAddPhraseComponent } from './modal-add-phrase.component';
+import { StorageDialogComponent } from './storage-dialog.component';
 
 import { RenderService } from './services/render.service';
-import { NavService } from './services/nav.service';
-import { DeleteService } from './services/delete.service';
+import { WordsService } from './services/words.service';
 import { EbooksService } from './services/ebooks.service';
+import { StorageService } from './services/storage.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { EbooksService } from './services/ebooks.service';
     HomeComponent,
     WordsComponent,
     EbooksComponent,
-    ModalAddPhraseComponent
+    StorageDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -35,10 +35,11 @@ import { EbooksService } from './services/ebooks.service';
   ],
   providers: [
     RenderService,
-    NavService,
-    DeleteService,
-    EbooksService
+    WordsService,
+    EbooksService,
+    StorageService
   ],
+  entryComponents: [StorageDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

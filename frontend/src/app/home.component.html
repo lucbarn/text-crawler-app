@@ -15,7 +15,7 @@
     <button mat-stroked-button color="primary" id="clear-button" (click)="clear()">
       Clear
     </button>
-    <button mat-stroked-button color="primary" id="start-button" (click)="analyzeText(true)">
+    <button mat-stroked-button color="primary" id="start-button" (click)="getPhrases(true)">
       Start
     </button>
   </div>
@@ -23,7 +23,7 @@
     <p id="no-results-message" *ngIf="noResults">No results found</p>
     <p *ngFor="let el of phrasesData; trackBy: trackByPhrases" [innerHTML]="el[0]" [ngClass]="{'ebook-title': el[2] === 'title'}"></p>
   </div>
-  <button mat-stroked-button color="primary" id="show-more-button" *ngIf="morePhrases" (click)="analyzeText(false)">
+  <button mat-stroked-button color="primary" id="show-more-button" *ngIf="morePhrases" (click)="getPhrases(false)">
     Show more
   </button>
 </main>

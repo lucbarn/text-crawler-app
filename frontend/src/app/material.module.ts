@@ -5,6 +5,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MatListModule } from '@angular/material/list';
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   exports: [
     MatButtonModule,
@@ -22,7 +24,8 @@ import { MatListModule } from '@angular/material/list';
     FormsModule,
     ReactiveFormsModule,
     MatRadioModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ]
 })
 

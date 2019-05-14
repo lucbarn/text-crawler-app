@@ -1,16 +1,6 @@
 <navbar (modalVisibilityEmitter)="changeModalVisibility()"
         (mainContentEmitter)="changeMainContent($event)">
 </navbar>
-<div id="modal-container" [ngClass]="{'hidden': !modalVisible}">
-  <modal-add-phrase *ngIf="modalVisible"
-                    (modalVisibilityEmitter)="changeModalVisibility()">
-  </modal-add-phrase>
-</div>
-<home *ngIf="mainContent == 'home'"
-      (wordsListEmitter)="setWordsList($event)">
-</home>
-<words *ngIf="mainContent == 'words'"
-       [wordsList]="wordsList"
-       [index]="index">
-</words>
+<home *ngIf="mainContent == 'home'"></home>
+<words *ngIf="mainContent == 'words'"></words>
 <ebooks *ngIf="mainContent == 'ebooks'"></ebooks>
