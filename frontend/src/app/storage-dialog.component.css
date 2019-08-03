@@ -1,3 +1,22 @@
+#dialog-content {
+  height: 80%;
+}
+
+#dialog-form {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.dialog-form-element {
+  width: 80%;
+  margin: 0 auto;
+}
+
+#dialog-actions {
+}
+
 .dialog-button {
   margin: auto;
 }

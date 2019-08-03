@@ -1,8 +1,19 @@
 <h2 mat-dialog-title>Add a new phrase</h2>
-<mat-dialog-content>
-
+<mat-dialog-content id="dialog-content">
+  <form id="dialog-form">
+    <mat-form-field class="dialog-form-element" appearance="outline">
+      <input matInput placeholder="Word">
+    </mat-form-field>
+    <mat-form-field class="dialog-form-element" appearance="outline">
+      <input matInput placeholder="Ebook">
+    </mat-form-field>
+    <mat-form-field class="dialog-form-element" appearance="outline">
+      <textarea matInput placeholder="Phrase" cdkTextareaAutosize
+                cdkAutosizeMinRows="7" cdkAutosizeMaxRows="10"></textarea>
+    </mat-form-field>
+  </form>
 </mat-dialog-content>
-<mat-dialog-actions>
+<mat-dialog-actions id="dialog-actions">
   <button class="dialog-button" mat-button (click)="onNoClick()">Cancel</button>
   <button class="dialog-button" mat-button>Confirm</button>
 </mat-dialog-actions>

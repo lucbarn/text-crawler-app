@@ -6,6 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     MatRadioModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule
   ],
   exports: [
     MatButtonModule,
@@ -25,7 +27,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     MatRadioModule,
     MatListModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule
   ]
 })
 
