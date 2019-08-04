@@ -1,5 +1,11 @@
+/*
+#dialog-title {
+
+}
+*/
 #dialog-content {
-  height: 80%;
+  min-height: 75%;
+  overflow: visible;
 }
 
 #dialog-form {
@@ -15,6 +21,7 @@
 }
 
 #dialog-actions {
+  justify-content: flex-end;
 }
 
 .dialog-button {
