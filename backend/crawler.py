@@ -26,12 +26,9 @@ class Crawler:
         for i in range(n):
             try:
                 phrase = next(self.crawler_generator)
-            except:
-                phrase = None
-            if phrase is None:
-                break
-            else:
                 res.append(phrase)
+            except:
+                break
         if len(res) == 0:
             self.completed = True
         return res

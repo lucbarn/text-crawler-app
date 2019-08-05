@@ -24,7 +24,7 @@ export class StorageService {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      console.log('The dialog was closed -> ', result);
     });
   }
 

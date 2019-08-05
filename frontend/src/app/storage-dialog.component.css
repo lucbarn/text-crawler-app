@@ -5,6 +5,7 @@
 */
 #dialog-content {
   min-height: 75%;
+  max-height: auto;
   overflow: visible;
 }
 

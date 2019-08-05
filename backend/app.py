@@ -28,11 +28,11 @@ def get_phrases():
     res = text_crawler.get_next_res()
     formatted_res = []
     current_ebook = text_crawler.get_current_ebook()
-    for ebook, phrase, phrase_index in res:
+    for word, ebook, phrase, phrase_index in res:
         if ebook != current_ebook:
-            formatted_res.append(['<strong>' + ebook + '<strong>', phrase_index - 1, 'title'])
+            formatted_res.append(['', ebook, '<strong>' + ebook + '<strong>', phrase_index - 1, 'title'])
             current_ebook = ebook
-        formatted_res.append([phrase, phrase_index, 'phrase'])
+        formatted_res.append([word, ebook, phrase, phrase_index, 'phrase'])
     text_crawler.set_current_ebook(current_ebook)
     return jsonify({'phrases': formatted_res, 'completed': text_crawler.get_completed()})
 

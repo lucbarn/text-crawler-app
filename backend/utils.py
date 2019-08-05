@@ -29,6 +29,7 @@ def crawler_generator(words_list):
                 stripped_word = word.rstrip('.;?!')
                 if stripped_word in words_set:
                     line_matches.append((i-k, stripped_word))
+                # check whether the current word is the last of the line
                 if len(stripped_word) < len(word) or i == len(text_words) - 1:
                     for j, match in line_matches:
                         res = ''
@@ -36,7 +37,7 @@ def crawler_generator(words_list):
                         res += ' '.join(line_words[:j])
                         res += ' <strong>' + line_words[j] + '</strong> '
                         res += ' '.join(line_words[j+1:])
-                        yield (ebook_title, res.strip(), phrase_index)
+                        yield (match, ebook_title, res.strip(), phrase_index)
                         phrase_index += 1
                     line_words = []
                     line_matches = []

@@ -8,11 +8,17 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class StorageDialogComponent {
 
-  // form: FormField;
+  word: string;
+  ebookTitle: string;
+  phrase: string;
 
   constructor(
     public dialogRef: MatDialogRef<StorageDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {}
+    @Inject(MAT_DIALOG_DATA) public data: any) {
+      this.word = data.word;
+      this.ebookTitle = data.title;
+      this.phrase = data.phrase;
+    }
 
   onNoClick(): void {
     this.dialogRef.close();
