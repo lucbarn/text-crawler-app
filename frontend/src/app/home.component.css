@@ -80,7 +80,17 @@ main {
 
 #text-area > p {
   font-family: sans-serif;
-  margin: 10px 0px;
+}
+
+#text-area > p.ebook-phrase {
+  margin: 0px;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+#text-area > p.ebook-phrase:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
 }
 
 #text-area > p.ebook-title {

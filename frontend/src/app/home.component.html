@@ -22,7 +22,7 @@
   <div id="text-area">
     <p id="no-results-message" *ngIf="noResults">No results found</p>
     <p *ngFor="let el of phrasesData; trackBy: trackByPhrases" [innerHTML]="el[2]"
-       [ngClass]="{'ebook-title': el[4] === 'title'}"
+       [ngClass]="(el[4] === 'title') ? 'ebook-title' : 'ebook-phrase'"
        (click)="modalOnClick(el)"></p>
   </div>
   <button mat-stroked-button color="primary" id="show-more-button" *ngIf="morePhrases" (click)="getPhrases(false)">
