@@ -2,7 +2,7 @@ import { Injectable, OnInit, OnDestroy, Component } from '@angular/core';
 import { Observable, Subject, Subscription, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { StorageDialogComponent } from '../storage-dialog.component';
 
