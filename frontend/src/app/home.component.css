@@ -86,11 +86,12 @@ main {
   margin: 0px;
   padding: 8px;
   border-radius: 6px;
+  border: 2px solid transparent;
 }
 
 #text-area > p.ebook-phrase:hover {
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border: 2px solid #0a65b3;
 }
 
 #text-area > p.ebook-title {
