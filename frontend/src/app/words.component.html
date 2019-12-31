@@ -1,8 +1,10 @@
 <div id="external-container">
-  <button mat-stroked-button color="warn"
+  <button mat-fab color="warn"
           [disabled]="words.selectedOptions.selected.length === 0"
           id="delete-button"
-          (click)="deleteWords(words.selectedOptions.selected)">Delete</button>
+          (click)="deleteWords(words.selectedOptions.selected)">
+    <mat-icon>delete</mat-icon>
+  </button>
   <p *ngIf="wordsList.length === 0" id="no-words-message">The words you add will be displayed here</p>
   <mat-selection-list id="words-list" #words>
     <mat-list-option class="word" *ngFor="let word of wordsList" value="{{ word }}">

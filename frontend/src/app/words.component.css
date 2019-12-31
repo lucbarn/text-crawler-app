@@ -17,13 +17,13 @@
 }
 
 #delete-button {
-  position: absolute;
-  top: 20px;
-  left: 20px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
 }
 
 #words-list {
-  width: 40%;
+  width: 50%;
   max-width: 500px;
   padding: 100px 0px;
   margin: auto;
