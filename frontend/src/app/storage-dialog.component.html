@@ -1,16 +1,19 @@
 <h2 mat-dialog-title>Add a new phrase</h2>
 <mat-dialog-content id="dialog-content">
   <form id="dialog-form">
-    <mat-form-field class="dialog-form-element" appearance="outline">
-      <input matInput placeholder="Word"
+    <mat-form-field class="dialog-form-element">
+      <mat-label>Word</mat-label>
+      <input matInput
              [(ngModel)]="word" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
-    <mat-form-field class="dialog-form-element" appearance="outline">
-      <input matInput placeholder="Ebook"
+    <mat-form-field class="dialog-form-element">
+      <mat-label>Ebook</mat-label>
+      <input matInput
              [(ngModel)]="ebookTitle" [ngModelOptions]="{standalone: true}">
     </mat-form-field>
-    <mat-form-field class="dialog-form-element" appearance="outline">
-      <textarea matInput placeholder="Phrase" cdkTextareaAutosize
+    <mat-form-field class="dialog-form-element">
+      <mat-label>Phrase</mat-label>
+      <textarea matInput cdkTextareaAutosize
                 cdkAutosizeMinRows="7" cdkAutosizeMaxRows="10"
                 [(ngModel)]="phrase"
                 [ngModelOptions]="{standalone: true}"></textarea>
@@ -18,6 +21,6 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions id="dialog-actions">
-  <button class="dialog-button" mat-flat-button color="primary" (click)="onNoClick()">Cancel</button>
+  <button class="dialog-button" mat-stroked-button color="primary" (click)="onNoClick()">Cancel</button>
   <button class="dialog-button" mat-flat-button color="primary">Confirm</button>
 </mat-dialog-actions>
