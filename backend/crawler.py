@@ -33,8 +33,8 @@ class Crawler:
             self.completed = True
         return res
 
-    def set_generator(self, words_list):
-        self.crawler_generator = crawler_generator(words_list)
+    def set_generator(self, word):
+        self.crawler_generator = crawler_generator(word)
         self.next_res = self.get_phrases(20)
 
     def reset(self):

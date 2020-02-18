@@ -20,11 +20,11 @@ def get_ebooks():
 @app.route('/phrases', methods=['POST'])
 def get_phrases():
     content = request.get_json()
-    words = content['wordsList']
+    word = content['word']
     new_analysis = content['newAnalysis'] == 1
     if new_analysis:
         text_crawler.reset()
-        text_crawler.set_generator(words)
+        text_crawler.set_generator(word)
     res = text_crawler.get_next_res()
     formatted_res = []
     current_ebook = text_crawler.get_current_ebook()

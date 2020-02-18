@@ -8,12 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar.component';
 import { HomeComponent } from './home.component';
-import { WordsComponent } from './words.component';
 import { EbooksComponent } from './ebooks.component';
 import { StorageDialogComponent } from './storage-dialog.component';
 
-import { RenderService } from './services/render.service';
-import { WordsService } from './services/words.service';
 import { EbooksService } from './services/ebooks.service';
 import { StorageService } from './services/storage.service';
 
@@ -22,7 +19,6 @@ import { StorageService } from './services/storage.service';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    WordsComponent,
     EbooksComponent,
     StorageDialogComponent
   ],
@@ -34,8 +30,6 @@ import { StorageService } from './services/storage.service';
     BrowserAnimationsModule
   ],
   providers: [
-    RenderService,
-    WordsService,
     EbooksService,
     StorageService
   ],

@@ -20,13 +20,16 @@ export class EbooksService {
       );
   }
 
-  getPhrases(words: string[], firstCall: boolean): Observable<any> {
+  getPhrases(word: string, firstCall: boolean): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       })
     };
-    const content = {wordsList: words, newAnalysis: firstCall};
+    const content = {
+      word: word,
+      newAnalysis: firstCall
+    };
     return this.http.post('/phrases', content, httpOptions)
       .pipe(
         catchError((error: any): Observable<any> => {

@@ -1,5 +1,4 @@
 import { Component, EventEmitter } from '@angular/core';
-import { WordsService } from './services/words.service';
 import { EbooksService } from './services/ebooks.service';
 import { StorageService } from './services/storage.service';
 
@@ -14,15 +13,8 @@ export class HomeComponent {
   noResults: boolean = false;
   morePhrases: boolean = false;
 
-  constructor(private wordsService: WordsService,
-              private ebooksService: EbooksService,
+  constructor(private ebooksService: EbooksService,
               private storageService: StorageService) {}
-
-  addWord(): void {
-    const trimmedWord = this.currentWord.trim();
-    this.wordsService.addWord(trimmedWord);
-    this.currentWord = '';
-  }
 
   clear(): void {
     this.noResults = false;
@@ -35,11 +27,10 @@ export class HomeComponent {
   }
 
   getPhrases(firstCall: boolean): void {
-    const wordsList = this.wordsService.getWordsList();
     if (firstCall) {
       this.clear();
     }
-    this.ebooksService.getPhrases(wordsList, firstCall).subscribe(res => {
+    this.ebooksService.getPhrases(this.currentWord.trim(), firstCall).subscribe(res => {
       if (firstCall && (res.phrases.length === 0)) {
         this.noResults = true;
       }

@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { RenderService } from './services/render.service';
 import { StorageService } from './services/storage.service';
 
 @Component({
@@ -12,7 +11,7 @@ export class NavbarComponent {
   @Output() mainContentEmitter: EventEmitter<string> = new EventEmitter<string>();
   mobilePileActive: boolean = false;
 
-  constructor(private renderService: RenderService, private storageService: StorageService) {}
+  constructor(private storageService: StorageService) {}
 
   changeModalVisibility() {
     this.storageService.openDialog();
@@ -20,10 +19,6 @@ export class NavbarComponent {
 
   changeMainContent(content) {
     this.mainContentEmitter.emit(content);
-  }
-
-  renderWordsSignal() {
-    this.renderService.renderWords();
   }
 
   changePileStatus() {

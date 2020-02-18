@@ -6,7 +6,7 @@
                name="box"
                [(ngModel)]="currentWord"
                type="text"
-               (keyup.enter)="addWord()"
+               (keyup.enter)="getPhrases(true)"
                placeholder="Add a new word...">
       </div>
     </form>

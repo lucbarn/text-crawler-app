@@ -10,9 +10,8 @@ def get_ebooks_names():
     ebooks_names = [filename for filename in filenames if filename.rsplit('.',1)[-1] == 'txt']
     return ebooks_names
 
-def crawler_generator(words_list):
+def crawler_generator(target_word):
     ebooks_names = get_ebooks_names()
-    words_set = set(words_list)
     phrase_index = 0
     for ebook_name in ebooks_names:
         # every ebook title gets assigned an index, so phrase_index is incremented by 1
@@ -27,7 +26,7 @@ def crawler_generator(words_list):
             for i, word in enumerate(text_words):
                 line_words.append(word)
                 stripped_word = word.rstrip('.;?!')
-                if stripped_word in words_set:
+                if stripped_word == target_word:
                     line_matches.append((i-k, stripped_word))
                 # check whether the current word is the last of the line
                 if len(stripped_word) < len(word) or i == len(text_words) - 1:
