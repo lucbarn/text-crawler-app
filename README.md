@@ -1,7 +1,7 @@
 # Text Crawler App
 
 This repository contains the code for a web application for extracting from a list of ebooks the phrases that
-contain at least one word of a given list, entered by the user.
+contain a word entered by the user.
 
 ## Build
 
@@ -30,8 +30,7 @@ python3 app.py
 
 ## Usage
 
-Add the words, one by one, and then click on the start button. You can see the list of words by clicking on the Words button
-in the upper-right corner and delete them if necessary. You can also see the list of ebooks by clicking on the Ebooks button.
+Enter a word in the input field and then click on the start button. You can see the list of ebooks by clicking on the Ebooks button.
 
 ## Ebooks
 
