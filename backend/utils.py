@@ -7,7 +7,7 @@ def format_title(s):
 def get_ebooks_names():
     folder_structure = walk('./ebooks')
     *head, filenames = next(folder_structure)
-    ebooks_names = [filename for filename in filenames if filename.rsplit('.',1)[-1] == 'txt']
+    ebooks_names = [filename for filename in filenames if filename.rsplit('.',1)[1:] == ['txt']]
     return ebooks_names
 
 def crawler_generator(target_word):
